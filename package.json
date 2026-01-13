@@ -1,0 +1,24 @@
+{
+  "name": "casadocodigo",
+  "version": "1.0.0",
+  "description": "Livraria Casa do Código",
+  "homepage": "https://github.com/carlossfreitass/casadocodigo#readme",
+  "bugs": {
+    "url": "https://github.com/carlossfreitass/casadocodigo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlossfreitass/casadocodigo.git"
+  },
+  "license": "ISC",
+  "author": "Carlos Freitas",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "4.16.3"
+  }
+}
