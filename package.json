@@ -19,7 +19,8 @@
     "start": "nodemon server.js"
   },
   "dependencies": {
-    "express": "4.16.3"
+    "express": "4.16.3",
+    "marko": "4.13.10"
   },
   "devDependencies": {
     "nodemon": "1.18.4"
