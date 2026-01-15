@@ -41,6 +41,19 @@ class LivroDao {
     })
   }
 
+  buscaPorId(id) {
+    return new Promise((resolve, reject) => {
+      this._db.get(
+        'SELECT * from livros WHERE id = ?',
+        [id],
+        (erro, resultados) => {
+          if (erro) return reject('Não foi possível buscar o livro!')
+          return resolve(resultados)
+        }
+      )
+    })
+  }
+
   remove(id) {
     return new Promise((resolve, reject) => {
       this._db.run(
@@ -54,6 +67,32 @@ class LivroDao {
           resolve()
         }
       )
+    })
+  }
+
+  edit(id, livro) {
+    return new Promise((resolve, reject) => {
+      this._db.run(`
+        UPDATE livros
+        SET
+          titulo = ?,
+          preco = ?,
+          descricao = ?
+        WHERE id = ?
+        `),
+        [
+          livro.titulo,
+          livro.preco,
+          livro.descricao,
+          id
+        ],
+        function (err) {
+          if (err) {
+            return reject ('Não foi possível remover o livro!')
+          }
+
+          resolve()
+        }
     })
   }
 }
