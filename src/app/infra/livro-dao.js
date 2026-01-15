@@ -59,8 +59,8 @@ class LivroDao {
       this._db.run(
         'DELETE FROM livros WHERE id = ?',
         [id],
-        function (err) {
-          if (err) {
+        function (erro) {
+          if (erro) {
             return reject('Não foi possível remover o livro!')
           }
 
@@ -70,7 +70,7 @@ class LivroDao {
     })
   }
 
-  edit(id, livro) {
+  edit(livro) {
     return new Promise((resolve, reject) => {
       this._db.run(`
         UPDATE livros
@@ -79,20 +79,17 @@ class LivroDao {
           preco = ?,
           descricao = ?
         WHERE id = ?
-        `),
-        [
-          livro.titulo,
-          livro.preco,
-          livro.descricao,
-          id
-        ],
-        function (err) {
-          if (err) {
-            return reject ('Não foi possível remover o livro!')
-          }
-
-          resolve()
-        }
+        `,
+      [
+        livro.titulo,
+        livro.preco,
+        livro.descricao,
+        livro.id
+      ],
+    function (erro) {
+      if (erro) return reject(erro)
+      resolve()
+    })
     })
   }
 }
